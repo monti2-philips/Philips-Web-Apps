@@ -1,0 +1,33 @@
+{
+  "AIM": [
+    "R_AIM_STATION_1",
+    "R_AIM_STATION_2",
+    "R_AIM_STATION_3",
+    "R_AIM_STATION_4",
+    "R_AIM_STATION_5",
+    "R_AIM10",
+    "R_MES_ADMIN"
+  ],
+  "RFB": [
+    "R_RT_1",
+    "R_RT_2",
+    "R_RT_3",
+    "R_RT_4",
+    "R_RT_5",
+    "R_RT_6",
+    "R_RT_7",
+    "R_RT_8",
+    "R_MES_ADMIN"
+  ],
+  "THERMAL": [
+    "R_RT_1",
+    "R_RT_2",
+    "R_RT_3",
+    "R_RT_4",
+    "R_RT_5",
+    "R_RT_6",
+    "R_RT_7",
+    "R_RT_8",
+    "R_MES_ADMIN"
+  ]
+}

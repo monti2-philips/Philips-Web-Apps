@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Philips Ultrasound Engineering Tools</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="css/bootstrap-multiselect.css"
+      type="text/css"
+    />
+    <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+  </head>
+  <body>
+    <h1 id="main_title">Global Transparency Data Retriever</h1>
+
+    <div class="container-lg">
+      <div class="row">
+        <div class="col-8">
+          <div class="row">
+            <div id="query_select" class="col-12">
+              <h5 id="section_title">Query Selection</h5>
+              <div
+                id="contentContainer"
+                class="p-2 rounded border bg-primary-subtle"
+              >
+                <div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="queryTypeToggle"
+                      id="variantToggle"
+                      value="Variant"
+                      checked
+                    />
+                    <label class="form-check-label" for="variantToggle">
+                      Variant Population
+                    </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="queryTypeToggle"
+                      id="referenceToggle"
+                      value="Reference"
+                    />
+                    <label class="form-check-label" for="referenceToggle">
+                      Reference Population
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <h5 id="section_title">Test Input</h5>
+              <div
+                id="contentContainer"
+                class="p-2 rounded border bg-primary-subtle"
+              >
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="acousticTestInput"
+                    value="Acoustic"
+                    checked
+                  />
+                  <label class="form-check-label" for="acousticTestInput"
+                    >Acoustic</label
+                  >
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="aimTestInput"
+                    value="AIM"
+                    checked
+                  />
+                  <label class="form-check-label" for="aimTestInput">AIM</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="rfbTestInput"
+                    value="RFB"
+                    checked
+                  />
+                  <label class="form-check-label" for="rfbTestInput">RFB</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="thermalTestInput"
+                    value="Thermal"
+                    checked
+                  />
+                  <label class="form-check-label" for="thermalTestInput"
+                    >Thermal</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h5 id="section_title">Input Data</h5>
+              <div class="p-2 rounded border bg-primary-subtle">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="mb-3">
+                      <label for="partNumberInput" class="form-label"
+                        >Part Number</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="partNumberInput"
+                        placeholder="12-Digit Part Number"
+                        aria-describedby="partNumberInput"
+                        required
+                        maxlength="12"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="workOrderInput" class="form-label"
+                        >Work Orders</label
+                      >
+                      <textarea
+                        type="text"
+                        class="form-control"
+                        id="workOrderInput"
+                        placeholder="Single or Multiple Work Orders (comma separated)"
+                        required
+                      ></textarea>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="mb-3">
+                          <label for="minDate" class="form-label"
+                            >Min Date</label
+                          >
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="minDate"
+                            min="2022-01-01"
+                            value="2022-01-01"
+                          />
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="mb-3">
+                          <label for="minDate" class="form-label"
+                            >Max Date</label
+                          >
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="maxDate"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="p-2 d-grid">
+                          <button
+                            class="btn btn-primary"
+                            type="button"
+                            onclick="resetInputs()"
+                          >
+                            Reset Inputs
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="row">
+                      <div class="col-12">
+                        <label class="form-label">Resource Selection</label>
+                        <div class="input-group mb-3">
+                          <label class="input-group-text" for="resourceAIM"
+                            >AIM</label
+                          >
+                          <select id="resourceAIM" multiple="multiple"></select>
+                        </div>
+                        <div class="input-group mb-3">
+                          <label class="input-group-text" for="resourceRFB"
+                            >RFB</label
+                          >
+                          <select id="resourceRFB" multiple="multiple"></select>
+                        </div>
+                        <div class="input-group mb-3">
+                          <label class="input-group-text" for="resourceThermal"
+                            >Thermal</label
+                          >
+                          <select
+                            class="form-select"
+                            id="resourceThermal"
+                            multiple
+                            size="5"
+                          >
+                            <option selected>All Resources</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="p-2 d-grid">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  onclick="runQuery()"
+                >
+                  Run Query
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="p-2 rounded border bg-light">
+            <h5 id="instructions">Instructions</h5>
+            <ol>
+              <li>Variant - Work Order Only</li>
+              <ul>
+                <li>Select Query Type "Variant"</li>
+                <li>Select Test(s) for Query</li>
+                <li>Enter 12-digit part number</li>
+                <li>Enter Work Order(s)</li>
+              </ul>
+              <li>Reference - Work Order Only</li>
+              <ul>
+                <li>Select Query Type "Reference"</li>
+                <li>Select Test(s) for Query</li>
+                <li>Enter 12-digit part number</li>
+                <li>Enter Work Order(s)</li>
+              </ul>
+              <li>Reference - Part Number and Date Range</li>
+              <ul>
+                <li>Select Query Type "Reference"</li>
+                <li>Select Test(s) for Query</li>
+                <li>Enter 12-digit part number</li>
+                <li>Select Minimum and Maximum Date</li>
+                (longer ranges will cause longer query times)
+              </ul>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          Data View
+          <div></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">Export</div>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/index.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script
+      src="https://code.jquery.com/jquery-2.2.4.js"
+      integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+      crossorigin="anonymous"
+    ></script> -->
+  </body>
+</html>
